@@ -27,7 +27,7 @@ const theme = createTheme({
       fontSize: "1.2rem",
     },
     caption: {
-      fontSize: "1.4rem !important",
+      fontSize: "1rem !important",
     },
     button: {
       fontSize: "1.4rem",
@@ -59,6 +59,21 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: ".8rem",
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          marginBottom: ".3rem",
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          marginLeft: "0",
+          marginTop: "0",
         },
       },
     },

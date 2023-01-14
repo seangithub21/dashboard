@@ -17,7 +17,12 @@ const getStyles = () => {
     form: {
       display: "flex",
       flexDirection: "column",
-      gap: "2rem",
+      gap: "1rem",
+    },
+    inputsContainer: {
+      display: "flex",
+      flexDirection: "column",
+      mt: "2rem",
     },
   };
 };
