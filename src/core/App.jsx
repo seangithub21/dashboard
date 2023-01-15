@@ -7,19 +7,19 @@ import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
 
 const LoginPage = lazy(() => import("pages/LoginPage"));
-const HomePage = lazy(() => import("pages/HomePage"));
+const StockPage = lazy(() => import("pages/StockPage"));
 const Page404 = lazy(() => import("pages/Page404"));
 
 const publicRoutes = [{ path: publicPaths.login, Component: <LoginPage /> }];
 
 const privateRoutes = [
   {
-    path: privatePaths.home,
-    Component: <HomePage />,
+    path: privatePaths.stock,
+    Component: <StockPage />,
   },
   {
     path: "/",
-    Component: <Navigate to={privatePaths.home} replace />,
+    Component: <Navigate to={privatePaths.stock} replace />,
   },
   {
     path: "*",
