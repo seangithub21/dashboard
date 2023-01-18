@@ -3,4 +3,5 @@ export const publicPaths = {
 };
 export const privatePaths = {
   stock: "/stock",
+  mockPage: "/mock-page",
 };

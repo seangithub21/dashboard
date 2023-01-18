@@ -5,6 +5,8 @@ const theme = createTheme({
     primary: {
       main: "#F2709C",
       contrastText: "#fff",
+      hover: "#a34968",
+      background: "#f9f9f9",
     },
   },
   typography: {
@@ -49,6 +51,9 @@ const theme = createTheme({
       },
     },
     MuiButton: {
+      defaultProps: {
+        disableRipple: true,
+      },
       styleOverrides: {
         root: {
           borderRadius: ".8rem",
@@ -56,6 +61,9 @@ const theme = createTheme({
       },
     },
     MuiLoadingButton: {
+      defaultProps: {
+        disableRipple: true,
+      },
       styleOverrides: {
         root: {
           borderRadius: ".8rem",

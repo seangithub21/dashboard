@@ -1,3 +1,5 @@
+import theme from "configs/theme";
+
 const getStyles = () => {
   return {
     container: {
@@ -18,6 +20,10 @@ const getStyles = () => {
       display: "flex",
       flexDirection: "column",
       gap: "1rem",
+    },
+    logo: {
+      fontWeight: "700",
+      color: theme.palette.primary.main,
     },
     inputsContainer: {
       display: "flex",

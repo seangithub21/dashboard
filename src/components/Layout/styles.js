@@ -2,7 +2,7 @@ const getStyles = () => ({
   container: { display: "flex" },
   content: {
     flexGrow: 1,
-    p: "2rem",
+    p: "0 2rem 2rem 2rem",
   },
 });
 

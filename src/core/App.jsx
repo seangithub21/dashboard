@@ -8,6 +8,7 @@ import PublicRoute from "./PublicRoute";
 
 const LoginPage = lazy(() => import("pages/LoginPage"));
 const StockPage = lazy(() => import("pages/StockPage"));
+const MockPage = lazy(() => import("pages/MockPage"));
 const Page404 = lazy(() => import("pages/Page404"));
 
 const publicRoutes = [{ path: publicPaths.login, Component: <LoginPage /> }];
@@ -16,6 +17,10 @@ const privateRoutes = [
   {
     path: privatePaths.stock,
     Component: <StockPage />,
+  },
+  {
+    path: privatePaths.mockPage,
+    Component: <MockPage />,
   },
   {
     path: "/",

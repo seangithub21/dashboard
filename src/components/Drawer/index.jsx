@@ -1,53 +1,71 @@
 import React from "react";
 import {
-  Divider,
   Drawer as MuiDrawer,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import PriceCheckIcon from "@mui/icons-material/PriceCheck";
+import { useLocation, useNavigate } from "react-router-dom";
 
+import { privatePaths } from "configs/routePaths";
 import DrawerHeader from "./DrawerHeader";
 
 import getStyles from "./styles";
 
 const sideBarMenuList = [
-  { title: "Stock", icon: <PriceCheckIcon /> },
-  { title: "Second stock", icon: <PriceCheckIcon /> },
+  {
+    title: "Stock",
+    icon: <PriceCheckIcon />,
+    path: privatePaths.stock,
+  },
+  {
+    title: "Mock page",
+    icon: <PriceCheckIcon />,
+    path: privatePaths.mockPage,
+  },
 ];
 
 const Drawer = ({ open }) => {
   const classes = getStyles({ open });
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isMenuItemActive = (menuItem) => {
+    if (location.pathname === menuItem.path) return true;
+  };
+
+  const handleMenuItemClick = (menuItem) => {
+    navigate(menuItem.path, { replace: true });
+  };
+
+  const handleClickLogo = () => {
+    navigate("/", { replace: true });
+  };
 
   return (
     <MuiDrawer variant="permanent" open={open} sx={classes.drawer}>
-      <DrawerHeader />
+      <DrawerHeader>
+        <Typography sx={classes.logo} onClick={handleClickLogo}>
+          StockMe
+        </Typography>
+      </DrawerHeader>
       <List>
         {sideBarMenuList.map((menuItem, index) => (
-          <ListItem
-            key={menuItem.title}
-            disablePadding
-            sx={{ display: "block" }}
-          >
+          <ListItem key={menuItem.title} sx={classes.menuItem}>
             <ListItemButton
-              selected={false}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&.Mui-selected": {
-                  backgroundColor: "red",
-                },
-              }}
+              disableRipple
+              selected={isMenuItemActive(menuItem)}
+              sx={classes.menuItemButton}
+              onClick={() => handleMenuItemClick(menuItem)}
             >
               <ListItemIcon
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  ...classes.menuItemIcon,
+                  color: isMenuItemActive(menuItem) && "#fff",
                 }}
               >
                 {menuItem.icon}

@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 
 import AppBar from "components/AppBar";
 import Drawer from "components/Drawer";
+import DrawerHeader from "components/Drawer/DrawerHeader";
 
 import getStyles from "./styles";
 
@@ -14,7 +15,10 @@ const Layout = ({ children }) => {
     <Box sx={classes.container}>
       <AppBar drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
       <Drawer open={drawerOpen} />
-      <Box sx={classes.content}>{children}</Box>
+      <Box sx={classes.content}>
+        <DrawerHeader sx={{ mb: "2rem" }} />
+        {children}
+      </Box>
     </Box>
   );
 };

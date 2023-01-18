@@ -3,6 +3,7 @@ import { Field, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
+import theme from "configs/theme";
 import Button from "components/common/Button";
 import Input from "components/common/Input";
 
@@ -42,7 +43,9 @@ const LoginPage = () => {
             return (
               <form onSubmit={handleSubmit}>
                 <Box sx={classes.form}>
-                  <Typography variant="h6">Logo</Typography>
+                  <Typography variant="h6" sx={classes.logo}>
+                    StockMe
+                  </Typography>
                   <Box sx={classes.inputsContainer}>
                     <Field name="email">
                       {(props) => (

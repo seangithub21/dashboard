@@ -23,6 +23,7 @@ const AppBar = ({ drawerOpen, setDrawerOpen }) => {
             localStorage.removeItem("user");
             navigate("/login");
           }}
+          sx={classes.signOutButton}
         >
           Sign out
         </Button>
