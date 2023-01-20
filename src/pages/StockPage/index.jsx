@@ -1,6 +1,18 @@
 import { Box, Typography } from "@mui/material";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import { getStocks, setLoading } from "features/stocksSlice";
 
 const StockPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setLoading(true));
+    dispatch(getStocks());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Box>
       <Typography sx={{ fontSize: "4rem", fontWeight: 700 }}>
