@@ -27,7 +27,7 @@ const LoginPage = () => {
 
   const onSubmit = (data) => {
     localStorage.setItem("user", "user");
-    navigate("/stock");
+    navigate("/stocks");
   };
 
   return (

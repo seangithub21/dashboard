@@ -4,7 +4,7 @@ import { privatePaths } from "configs/routePaths";
 
 const PublicRoute = ({ children }) => {
   if (localStorage.getItem("user")) {
-    return <Navigate to={privatePaths.stock} replace />;
+    return <Navigate to={privatePaths.stocks} replace />;
   }
 
   return children;

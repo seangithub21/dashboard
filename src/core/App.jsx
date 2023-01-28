@@ -7,7 +7,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
 
 const LoginPage = lazy(() => import("pages/LoginPage"));
-const StockPage = lazy(() => import("pages/StockPage"));
+const StocksPage = lazy(() => import("pages/StocksPage"));
+const CompanyDetailsPage = lazy(() => import("pages/CompanyDetailsPage"));
 const MockPage = lazy(() => import("pages/MockPage"));
 const Page404 = lazy(() => import("pages/Page404"));
 
@@ -15,8 +16,12 @@ const publicRoutes = [{ path: publicPaths.login, Component: <LoginPage /> }];
 
 const privateRoutes = [
   {
-    path: privatePaths.stock,
-    Component: <StockPage />,
+    path: privatePaths.stocks,
+    Component: <StocksPage />,
+  },
+  {
+    path: privatePaths.companyDetails,
+    Component: <CompanyDetailsPage />,
   },
   {
     path: privatePaths.mockPage,
@@ -24,7 +29,7 @@ const privateRoutes = [
   },
   {
     path: "/",
-    Component: <Navigate to={privatePaths.stock} replace />,
+    Component: <Navigate to={privatePaths.stocks} replace />,
   },
   {
     path: "*",

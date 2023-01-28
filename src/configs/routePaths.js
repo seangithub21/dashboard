@@ -2,6 +2,7 @@ export const publicPaths = {
   login: "/login",
 };
 export const privatePaths = {
-  stock: "/stock",
+  stocks: "/stocks",
+  companyDetails: "/stocks/company-details/:companyTicker",
   mockPage: "/mock-page",
 };

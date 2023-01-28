@@ -18,9 +18,9 @@ import getStyles from "./styles";
 
 const sideBarMenuList = [
   {
-    title: "Stock",
+    title: "Stocks",
     icon: <PriceCheckIcon />,
-    path: privatePaths.stock,
+    path: privatePaths.stocks,
   },
   {
     title: "Mock page",
