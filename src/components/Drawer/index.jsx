@@ -34,9 +34,8 @@ const Drawer = ({ open }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isMenuItemActive = (menuItem) => {
-    if (location.pathname === menuItem.path) return true;
-  };
+  const isMenuItemActive = (menuItem) =>
+    location.pathname.includes(menuItem.path);
 
   const handleMenuItemClick = (menuItem) => {
     navigate(menuItem.path, { replace: true });

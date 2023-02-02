@@ -47,13 +47,13 @@ const StocksPage = () => {
   ];
 
   useEffect(() => {
-    // getStocks();
+    getStocks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) return <LinearProgress />;
 
-  return <Table columns={columns} data={stocks} />;
+  return <Table title="Stocks" columns={columns} data={stocks} />;
 };
 
 export default observer(StocksPage);

@@ -8,6 +8,10 @@ const theme = createTheme({
       hover: "#a34968",
       background: "#f9f9f9",
     },
+    marketOpen: "#00873c",
+    marketClosed: "#fc0303",
+    priceRise: "#00873c",
+    priceFall: "#fc0303",
   },
   typography: {
     fontFamily: [
