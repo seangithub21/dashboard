@@ -37,7 +37,7 @@ const Tabs = ({ tabs }) => {
         </TabList>
       </Box>
       {tabs.map((tab) => (
-        <TabPanel key={tab.tabId} value={tab.tabId}>
+        <TabPanel key={tab.tabId} value={tab.tabId} sx={{ p: "2rem 0 2rem 0" }}>
           {tab.component}
         </TabPanel>
       ))}

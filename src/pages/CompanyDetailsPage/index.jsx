@@ -11,18 +11,10 @@ import {
   priceChangeConverter,
 } from "utils/priceConverter";
 import theme from "configs/theme";
+import Quote from "./components/Quote";
 import Tabs from "components/common/Tabs";
 
 import getStyles from "./styles";
-
-//  NOTE: Mock data
-const Comp1 = () => {
-  useEffect(() => {
-    console.log("Tab 1 here");
-  }, []);
-
-  return <Box>Tab1</Box>;
-};
 
 //  NOTE: Mock data
 const Comp2 = () => {
@@ -33,13 +25,14 @@ const Comp2 = () => {
   return <Box>Tab2</Box>;
 };
 
-//  NOTE: Mock data
 const tabs = [
   {
-    tabId: "companyInfo",
-    label: "Company info",
-    component: <Comp1 />,
+    tabId: "quote",
+    label: "Quote",
+    component: <Quote />,
   },
+
+  //  NOTE: Mock data
   {
     tabId: "companyInfo2",
     label: "Company info2",
@@ -127,33 +120,3 @@ const CompanyDetailsPage = () => {
 };
 
 export default observer(CompanyDetailsPage);
-
-//  NOTE: Quote response example
-// {
-//   "symbol": "AMZN",
-//   "name": "Amazon.com Inc",
-//   "exchange": "NASDAQ",
-//   "mic_code": "XNGS",
-//   "currency": "USD",
-//   "datetime": "2023-01-27",
-//   "timestamp": 1674853199,
-//   "open": "99.53000",
-//   "high": "103.49000",
-//   "low": "99.53000",
-//   "close": "102.24000",
-//   "volume": "87678100",
-//   "previous_close": "99.22000",
-//   "change": "3.02000",
-//   "percent_change": "3.04374",
-//   "average_volume": "76794270",
-//   "is_market_open": false,
-//   "fifty_two_week": {
-//     "low": "81.43000",
-//     "high": "170.83150",
-//     "low_change": "20.81000",
-//     "high_change": "-68.59150",
-//     "low_change_percent": "25.55569",
-//     "high_change_percent": "-40.15155",
-//     "range": "81.430000 - 170.831497"
-//   }
-// }
