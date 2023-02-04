@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import App from "./core/App";
 import theme from "configs/theme";
@@ -13,6 +15,7 @@ root.render(
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <ToastContainer position="top-center" />
         <App />
       </ThemeProvider>
     </BrowserRouter>

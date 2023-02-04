@@ -1,30 +1,42 @@
-import axios from "configs/axios";
 import { action, makeAutoObservable, observable, runInAction } from "mobx";
+import { toast } from "react-toastify";
 
+import axios from "configs/axios";
 import { decimalConverter } from "utils/priceConverter";
 
 class CompanyInfoStore {
   quote = {};
   realTimePrice = 0;
+  profile = {};
+  logo = "";
 
-  isLoading = false;
+  isLoadingQuote = false;
+  isLoadingRealTimePrice = false;
+  isLoadingProfile = false;
+  isLoadingLogo = false;
 
   constructor() {
     makeAutoObservable(this, {
       quote: observable.ref,
       realTimePrice: observable.ref,
+      profile: observable.ref,
+      logo: observable.ref,
 
-      isLoading: observable.ref,
+      isLoadingQuote: observable.ref,
+      isLoadingRealTimePrice: observable.ref,
+      isLoadingProfile: observable.ref,
+      isLoadingLogo: observable.ref,
 
       getQuote: action,
       getRealTimePrice: action,
+      getProfile: action,
+      getLogo: action,
     });
   }
 
   getQuote = (params) => {
     runInAction(() => {
-      this.quote = {};
-      this.isLoading = true;
+      this.isLoadingQuote = true;
     });
     axios
       .get("quote", {
@@ -37,23 +49,24 @@ class CompanyInfoStore {
         },
       })
       .then(({ data }) => {
+        toast.success("Quote fetched successfully");
         runInAction(() => {
           this.quote = data;
-          this.isLoading = false;
+          this.isLoadingQuote = false;
         });
       })
       .catch((error) => {
+        toast.error(error.response.data.message);
         runInAction(() => {
-          this.isLoading = false;
+          this.isLoadingQuote = false;
         });
-        return error;
       });
   };
 
   getRealTimePrice = (params) => {
     runInAction(() => {
       this.realTimePrice = 0;
-      this.isLoading = true;
+      this.isLoadingRealTimePrice = true;
     });
     axios
       .get("price", {
@@ -66,16 +79,73 @@ class CompanyInfoStore {
         },
       })
       .then(({ data: { price } }) => {
+        toast.success("Real-time price fetched successfully");
         runInAction(() => {
           this.realTimePrice = decimalConverter(price);
-          this.isLoading = false;
+          this.isLoadingRealTimePrice = false;
         });
       })
       .catch((error) => {
+        toast.error(error.response.data.message);
         runInAction(() => {
-          this.isLoading = false;
+          this.isLoadingRealTimePrice = false;
         });
-        return error;
+      });
+  };
+
+  getProfile = (symbol) => {
+    runInAction(() => {
+      this.profile = {};
+      this.isLoadingProfile = true;
+    });
+    axios
+      .get("profile", {
+        params: {
+          symbol: symbol,
+        },
+      })
+      .then(({ data }) => {
+        if (data.code) {
+          toast.error(data.message);
+        } else {
+          toast.success("Profile fetched successfully");
+        }
+        runInAction(() => {
+          this.profile = data;
+          this.isLoadingProfile = false;
+        });
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+        runInAction(() => {
+          this.isLoadingProfile = false;
+        });
+      });
+  };
+
+  getLogo = (symbol) => {
+    runInAction(() => {
+      this.logo = "";
+      this.isLoadingLogo = true;
+    });
+    axios
+      .get("logo", {
+        params: {
+          symbol: symbol,
+        },
+      })
+      .then(({ data }) => {
+        toast.success("Logo fetched successfully");
+        runInAction(() => {
+          this.logo = data.url;
+          this.isLoadingLogo = false;
+        });
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+        runInAction(() => {
+          this.isLoadingLogo = false;
+        });
       });
   };
 }

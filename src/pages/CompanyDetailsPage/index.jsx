@@ -11,19 +11,11 @@ import {
   priceChangeConverter,
 } from "utils/priceConverter";
 import theme from "configs/theme";
-import Quote from "./components/Quote";
 import Tabs from "components/common/Tabs";
+import Quote from "./components/Quote";
+import Profile from "./components/Profile";
 
 import getStyles from "./styles";
-
-//  NOTE: Mock data
-const Comp2 = () => {
-  useEffect(() => {
-    console.log("Tab 2 here");
-  }, []);
-
-  return <Box>Tab2</Box>;
-};
 
 const tabs = [
   {
@@ -31,12 +23,10 @@ const tabs = [
     label: "Quote",
     component: <Quote />,
   },
-
-  //  NOTE: Mock data
   {
-    tabId: "companyInfo2",
-    label: "Company info2",
-    component: <Comp2 />,
+    tabId: "profile",
+    label: "Profile",
+    component: <Profile />,
   },
 ];
 
@@ -46,7 +36,8 @@ const CompanyDetailsPage = () => {
 
   const {
     getQuote,
-    isLoading,
+    isLoadingQuote,
+    isLoadingRealTimePrice,
     quote: {
       name,
       symbol,
@@ -72,7 +63,7 @@ const CompanyDetailsPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [is_market_open]);
 
-  if (isLoading) return <LinearProgress />;
+  if (isLoadingQuote || isLoadingRealTimePrice) return <LinearProgress />;
 
   return (
     <Box>

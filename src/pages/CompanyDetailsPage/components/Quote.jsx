@@ -15,7 +15,7 @@ const Quote = () => {
   const classes = getQuoteStyles();
 
   const {
-    isLoading,
+    isLoadingQuote,
     quote: {
       is_market_open,
       open,
@@ -30,7 +30,7 @@ const Quote = () => {
     },
   } = companyInfoStore;
 
-  if (isLoading) return <LinearProgress />;
+  if (isLoadingQuote) return <LinearProgress />;
 
   return (
     <InfoContainer sx={classes.container}>

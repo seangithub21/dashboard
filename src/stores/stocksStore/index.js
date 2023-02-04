@@ -1,5 +1,7 @@
-import axios from "configs/axios";
+import { toast } from "react-toastify";
 import { action, makeAutoObservable, observable, runInAction } from "mobx";
+
+import axios from "configs/axios";
 
 class StocksStore {
   stocks = [];
@@ -31,16 +33,17 @@ class StocksStore {
             },
       })
       .then(({ data: { data } }) => {
+        toast.success("Stocks fetched successfully");
         runInAction(() => {
           this.stocks = data;
           this.isLoading = false;
         });
       })
       .catch((error) => {
+        toast.error(error.response.data.message);
         runInAction(() => {
           this.isLoading = false;
         });
-        return error;
       });
   };
 }
