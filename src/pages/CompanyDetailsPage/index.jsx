@@ -14,6 +14,7 @@ import theme from "configs/theme";
 import Tabs from "components/common/Tabs";
 import Quote from "./components/Quote";
 import Profile from "./components/Profile";
+import HistoricalQuotes from "./components/HistoricalQuotes";
 
 import getStyles from "./styles";
 
@@ -27,6 +28,11 @@ const tabs = [
     tabId: "profile",
     label: "Profile",
     component: <Profile />,
+  },
+  {
+    tabId: "historical-quotes",
+    label: "Historical Quotes",
+    component: <HistoricalQuotes />,
   },
 ];
 
@@ -86,7 +92,7 @@ const CompanyDetailsPage = () => {
               change && change.includes("-")
                 ? theme.palette.priceFall
                 : theme.palette.priceRise,
-            lineHeight: "1",
+            lineHeight: "1.2",
             fontSize: "2rem",
             fontWeight: 600,
           }}

@@ -9,11 +9,13 @@ class CompanyInfoStore {
   realTimePrice = 0;
   profile = {};
   logo = "";
+  historicalQuotes = [];
 
   isLoadingQuote = false;
   isLoadingRealTimePrice = false;
   isLoadingProfile = false;
   isLoadingLogo = false;
+  isLoadingHistoricalQuotes = false;
 
   constructor() {
     makeAutoObservable(this, {
@@ -21,16 +23,19 @@ class CompanyInfoStore {
       realTimePrice: observable.ref,
       profile: observable.ref,
       logo: observable.ref,
+      historicalQuotes: observable.ref,
 
       isLoadingQuote: observable.ref,
       isLoadingRealTimePrice: observable.ref,
       isLoadingProfile: observable.ref,
       isLoadingLogo: observable.ref,
+      isLoadingHistoricalQuotes: observable.ref,
 
       getQuote: action,
       getRealTimePrice: action,
       getProfile: action,
       getLogo: action,
+      getHistoricalQuotes: action,
     });
   }
 
@@ -145,6 +150,36 @@ class CompanyInfoStore {
         toast.error(error.response.data.message);
         runInAction(() => {
           this.isLoadingLogo = false;
+        });
+      });
+  };
+
+  getHistoricalQuotes = (params) => {
+    runInAction(() => {
+      this.historicalQuotes = [];
+      this.isLoadingHistoricalQuotes = true;
+    });
+    axios
+      .get("time_series", {
+        params: {
+          symbol: "AMZN",
+          interval: "1day",
+          outputsize: "30",
+          format: "json",
+          ...params,
+        },
+      })
+      .then(({ data: { values } }) => {
+        toast.success("Historical quotes fetched successfully");
+        runInAction(() => {
+          this.historicalQuotes = values;
+          this.isLoadingHistoricalQuotes = false;
+        });
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+        runInAction(() => {
+          this.isLoadingHistoricalQuotes = false;
         });
       });
   };

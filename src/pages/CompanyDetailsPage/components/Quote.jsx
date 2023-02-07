@@ -6,6 +6,7 @@ import {
   percentPriceChangeConverter,
   priceChangeConverter,
 } from "utils/priceConverter";
+import { volumeConverter } from "utils/volumeConverter";
 import theme from "configs/theme";
 import InfoContainer from "components/common/InfoContainer";
 
@@ -67,7 +68,7 @@ const Quote = () => {
       <Box sx={classes.info}>
         <Typography>Volume:</Typography>
         <Typography sx={classes.quoteValue}>
-          {Intl.NumberFormat("en", { notation: "compact" }).format(volume)}
+          {volumeConverter(volume)}
         </Typography>
       </Box>
       <Divider />
