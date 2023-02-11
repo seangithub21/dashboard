@@ -1,13 +1,12 @@
 import { Box, Divider, LinearProgress, Typography } from "@mui/material";
 import { observer } from "mobx-react-lite";
 
-import { companyInfoStore } from "stores";
+import { cryptoInfoStore } from "stores";
 import {
   decimalConverter,
   percentPriceChangeConverter,
   priceChangeConverter,
 } from "utils/priceConverter";
-import { volumeConverter } from "utils/volumeConverter";
 import theme from "configs/theme";
 import InfoContainer from "components/common/InfoContainer";
 
@@ -24,13 +23,14 @@ const Quote = () => {
       high,
       low,
       close,
-      volume,
       previous_close,
       change,
       percent_change,
       fifty_two_week,
+      rolling_1d_change,
+      rolling_7d_change,
     },
-  } = companyInfoStore;
+  } = cryptoInfoStore;
 
   if (isLoadingQuote) return <LinearProgress />;
 
@@ -67,13 +67,6 @@ const Quote = () => {
       </Box>
       <Divider />
       <Box sx={classes.info}>
-        <Typography>Volume:</Typography>
-        <Typography sx={classes.quoteValue}>
-          {volumeConverter(volume)}
-        </Typography>
-      </Box>
-      <Divider />
-      <Box sx={classes.info}>
         <Typography>Previous Close:</Typography>
         <Typography sx={classes.quoteValue}>
           {decimalConverter(previous_close)}
@@ -101,6 +94,36 @@ const Quote = () => {
         <Typography sx={classes.quoteValue}>
           {decimalConverter(fifty_two_week?.low)} -{" "}
           {decimalConverter(fifty_two_week?.high)}
+        </Typography>
+      </Box>
+      <Divider />
+      <Box sx={classes.info}>
+        <Typography>Rolling 1-day change:</Typography>
+        <Typography
+          sx={{
+            color:
+              change && change.includes("-")
+                ? theme.palette.priceFall
+                : theme.palette.priceRise,
+            fontWeight: 700,
+          }}
+        >
+          {priceChangeConverter(rolling_1d_change)}
+        </Typography>
+      </Box>
+      <Divider />
+      <Box sx={classes.info}>
+        <Typography>Rolling 7-day change:</Typography>
+        <Typography
+          sx={{
+            color:
+              change && change.includes("-")
+                ? theme.palette.priceFall
+                : theme.palette.priceRise,
+            fontWeight: 700,
+          }}
+        >
+          {priceChangeConverter(rolling_7d_change)}
         </Typography>
       </Box>
     </InfoContainer>

@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { privatePaths } from "configs/routePaths";
 import DrawerHeader from "./DrawerHeader";
+import CryptoIcon from "assets/svg/CryptoIcon";
 
 import getStyles from "./styles";
 
@@ -23,9 +24,9 @@ const sideBarMenuList = [
     path: privatePaths.stocks,
   },
   {
-    title: "Mock page",
-    icon: <PriceCheckIcon />,
-    path: privatePaths.mockPage,
+    title: "Crypto",
+    icon: <CryptoIcon />,
+    path: privatePaths.crypto,
   },
 ];
 

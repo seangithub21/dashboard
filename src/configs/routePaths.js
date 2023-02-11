@@ -4,5 +4,6 @@ export const publicPaths = {
 export const privatePaths = {
   stocks: "/stocks",
   companyDetails: "/stocks/company-details/:companyTicker",
-  mockPage: "/mock-page",
+  crypto: "/crypto",
+  cryptoDetails: "/crypto/crypto-details/:cryptoSymbol",
 };

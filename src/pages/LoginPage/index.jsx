@@ -3,7 +3,6 @@ import { Field, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
-import theme from "configs/theme";
 import Button from "components/common/Button";
 import Input from "components/common/Input";
 
@@ -14,11 +13,11 @@ const initialValues = { email: "", password: "" };
 const schema = Yup.object().shape({
   email: Yup.string()
     .required("Email is a required field")
-    .matches("email", "Type 'email' for now"),
+    .matches(`${process.env.REACT_APP_EMAIL}`, "Incorrect email"),
   password: Yup.string()
     .required("Password is a requred field")
     .min(8, "Password should be 8 symbols at least")
-    .matches("password", "Just type 'password' for now"),
+    .matches(`${process.env.REACT_APP_PASSWORD}`, "Incorrect password"),
 });
 
 const LoginPage = () => {
@@ -50,7 +49,7 @@ const LoginPage = () => {
                     <Field name="email">
                       {(props) => (
                         <Input
-                          label="Just type 'email' for now"
+                          label="Email"
                           helperText={errors.email}
                           error={!!errors.email}
                           {...props}
@@ -60,7 +59,7 @@ const LoginPage = () => {
                     <Field name="password">
                       {(props) => (
                         <Input
-                          label="Type 'password'"
+                          label="Password"
                           isPassword
                           helperText={errors.password}
                           error={!!errors.password}
