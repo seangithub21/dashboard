@@ -1,6 +1,4 @@
-import theme from "configs/theme";
-
-const getStyles = () => {
+const getStyles = ({ theme }) => {
   return {
     companyNameInfo: {
       display: "flex",

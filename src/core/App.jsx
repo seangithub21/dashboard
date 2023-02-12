@@ -1,7 +1,14 @@
-import { lazy, Suspense } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
-import { LinearProgress } from "@mui/material";
+import { createContext, lazy, Suspense, useMemo, useState } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  CssBaseline,
+  ThemeProvider,
+  LinearProgress,
+  createTheme,
+} from "@mui/material";
+import { ToastContainer } from "react-toastify";
 
+import baseTheme, { darkMode } from "configs/theme";
 import { publicPaths, privatePaths } from "configs/routePaths";
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
@@ -42,27 +49,63 @@ const privateRoutes = [
   },
 ];
 
+export const ColorModeContext = createContext(null);
+
 const App = () => {
+  const [themeMode, setThemeMode] = useState("light");
+
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setThemeMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+      },
+    }),
+    []
+  );
+
+  const theme = useMemo(
+    () =>
+      createTheme({
+        ...baseTheme,
+        palette: {
+          mode: themeMode,
+          ...(themeMode === "light" ? baseTheme.palette : darkMode.palette),
+        },
+      }),
+    [themeMode]
+  );
+
   return (
-    <Suspense fallback={<LinearProgress />}>
-      <Routes>
-        {publicRoutes.map((route) => (
-          <Route
-            key={route.path}
-            path={route.path}
-            element={<PublicRoute>{route.Component}</PublicRoute>}
-          />
-        ))}
-        {privateRoutes.map((route) => (
-          <Route
-            key={route.path}
-            path={route.path}
-            element={<ProtectedRoute>{route.Component}</ProtectedRoute>}
-          />
-        ))}
-        <Route path="*" element={<Navigate to={publicPaths.login} replace />} />
-      </Routes>
-    </Suspense>
+    <BrowserRouter>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <ToastContainer position="top-center" limit={3} />
+          <Suspense fallback={<LinearProgress />}>
+            <Routes>
+              {publicRoutes.map((route) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={<PublicRoute>{route.Component}</PublicRoute>}
+                />
+              ))}
+              {privateRoutes.map((route) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={<ProtectedRoute>{route.Component}</ProtectedRoute>}
+                />
+              ))}
+              <Route
+                path="*"
+                element={<Navigate to={publicPaths.login} replace />}
+              />
+            </Routes>
+          </Suspense>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </BrowserRouter>
   );
 };
 

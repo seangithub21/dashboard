@@ -1,6 +1,4 @@
-import theme from "configs/theme";
-
-const getStyles = ({ drawerOpen }) => ({
+const getStyles = ({ drawerOpen, theme }) => ({
   appBar: {
     borderRadius: "0rem 0rem .8rem .8rem",
     zIndex: theme.zIndex.drawer + 1,
@@ -22,13 +20,8 @@ const getStyles = ({ drawerOpen }) => ({
     cursor: "pointer",
     fontSize: "3rem",
   },
-  signOutButton: {
-    color: theme.palette.primary.main,
-    backgroundColor: theme.palette.primary.background,
-    "&:hover": {
-      backgroundColor: "#F2E0EF",
-    },
-  },
+  switchTheme: { fontSize: "2rem" },
+  signOutButton: { fontSize: "2rem" },
 });
 
 export default getStyles;

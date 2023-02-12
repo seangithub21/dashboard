@@ -34,7 +34,11 @@ const icons = {
 
 const Table = (props) => {
   return (
-    <MaterialTable {...props} icons={icons}>
+    <MaterialTable
+      {...props}
+      icons={icons}
+      style={{ borderRadius: ".8rem .8rem 0 0" }}
+    >
       Table
     </MaterialTable>
   );

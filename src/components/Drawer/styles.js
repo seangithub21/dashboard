@@ -1,6 +1,4 @@
-import theme from "configs/theme";
-
-const getStyles = ({ open } = {}) => ({
+const getStyles = ({ open, theme } = {}) => ({
   drawer: {
     width: "24rem",
     flexShrink: 0,
@@ -49,6 +47,9 @@ const getStyles = ({ open } = {}) => ({
     minWidth: 0,
     mr: open ? 3 : "auto",
     justifyContent: "center",
+    "& svg": {
+      fontSize: "1.8rem",
+    },
   },
 });
 

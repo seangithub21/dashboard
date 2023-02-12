@@ -7,6 +7,7 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  useTheme,
 } from "@mui/material";
 import PriceCheckIcon from "@mui/icons-material/PriceCheck";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -31,7 +32,8 @@ const sideBarMenuList = [
 ];
 
 const Drawer = ({ open }) => {
-  const classes = getStyles({ open });
+  const theme = useTheme();
+  const classes = getStyles({ open, theme });
   const navigate = useNavigate();
   const location = useLocation();
 
