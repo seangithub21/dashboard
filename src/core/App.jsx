@@ -18,6 +18,7 @@ const StocksPage = lazy(() => import("pages/StocksPage"));
 const CompanyDetailsPage = lazy(() => import("pages/CompanyDetailsPage"));
 const CryptoPage = lazy(() => import("pages/CryptoPage"));
 const CryptoDetailsPage = lazy(() => import("pages/CryptoDetailsPage"));
+const CurrencyConverterPage = lazy(() => import("pages/CurrencyConverterPage"));
 const Page404 = lazy(() => import("pages/Page404"));
 
 const publicRoutes = [{ path: publicPaths.login, Component: <LoginPage /> }];
@@ -38,6 +39,10 @@ const privateRoutes = [
   {
     path: privatePaths.cryptoDetails,
     Component: <CryptoDetailsPage />,
+  },
+  {
+    path: privatePaths.currencyConverter,
+    Component: <CurrencyConverterPage />,
   },
   {
     path: "/",

@@ -6,10 +6,12 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Tooltip,
   Typography,
   useTheme,
 } from "@mui/material";
 import PriceCheckIcon from "@mui/icons-material/PriceCheck";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { privatePaths } from "configs/routePaths";
@@ -28,6 +30,11 @@ const sideBarMenuList = [
     title: "Crypto",
     icon: <CryptoIcon />,
     path: privatePaths.crypto,
+  },
+  {
+    title: "Currency Converter",
+    icon: <CurrencyExchangeIcon />,
+    path: privatePaths.currencyConverter,
   },
 ];
 
@@ -58,25 +65,27 @@ const Drawer = ({ open }) => {
       <List>
         {sideBarMenuList.map((menuItem, index) => (
           <ListItem key={menuItem.title} sx={classes.menuItem}>
-            <ListItemButton
-              disableRipple
-              selected={isMenuItemActive(menuItem)}
-              sx={classes.menuItemButton}
-              onClick={() => handleMenuItemClick(menuItem)}
-            >
-              <ListItemIcon
-                sx={{
-                  ...classes.menuItemIcon,
-                  color: isMenuItemActive(menuItem) && "#fff",
-                }}
+            <Tooltip title={menuItem.title} placement="right">
+              <ListItemButton
+                disableRipple
+                selected={isMenuItemActive(menuItem)}
+                sx={classes.menuItemButton}
+                onClick={() => handleMenuItemClick(menuItem)}
               >
-                {menuItem.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={menuItem.title}
-                sx={{ opacity: open ? 1 : 0 }}
-              />
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    ...classes.menuItemIcon,
+                    color: isMenuItemActive(menuItem) && "#fff",
+                  }}
+                >
+                  {menuItem.icon}
+                </ListItemIcon>
+                <ListItemText
+                  primary={menuItem.title}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </Tooltip>
           </ListItem>
         ))}
       </List>

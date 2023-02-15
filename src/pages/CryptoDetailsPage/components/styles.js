@@ -1,7 +1,7 @@
 export const getQuoteStyles = () => {
   return {
     container: {
-      maxWidth: "30rem",
+      maxWidth: "40rem",
     },
     info: {
       display: "flex",

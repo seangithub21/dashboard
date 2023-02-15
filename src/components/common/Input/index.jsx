@@ -4,14 +4,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
-const Input = ({ helperText, isPassword, isSearch, ...props }) => {
+const Input = ({ helperText, isPassword, isSearch, onChange, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handlePassword = () => setShowPassword(!showPassword);
 
   const handleChange = (e) => {
     props?.form && props.form.setFieldValue(props.field.name, e.target.value);
-    props?.onChange && props.onChange(e.target.value);
+    onChange && onChange(e.target.value);
   };
 
   return (
