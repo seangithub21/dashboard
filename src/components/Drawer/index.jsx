@@ -59,7 +59,7 @@ const Drawer = ({ open }) => {
     <MuiDrawer variant="permanent" open={open} sx={classes.drawer}>
       <DrawerHeader>
         <Typography sx={classes.logo} onClick={handleClickLogo}>
-          StockMe
+          Stock Logo
         </Typography>
       </DrawerHeader>
       <List>
