@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# About this project
+
+This is a simple dashboard with stock market and cryptocurrencies information created for training purposes.
+Frontend is covered mainly with Material-UI library and RapidAPI is utilized underhood.
+
+## Built with
+
+- ReactJS
+- MobX
+- MUI
+- RapidAPI
+
 ## Available Scripts
 
 In the project directory, you can run:
