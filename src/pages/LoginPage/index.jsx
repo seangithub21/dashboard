@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { Field, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
@@ -21,7 +21,8 @@ const schema = Yup.object().shape({
 });
 
 const LoginPage = () => {
-  const classes = getStyles();
+  const theme = useTheme();
+  const classes = getStyles({ theme });
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -42,9 +43,14 @@ const LoginPage = () => {
             return (
               <form onSubmit={handleSubmit}>
                 <Box sx={classes.form}>
-                  <Typography variant="h6" sx={classes.logo}>
-                    StockMe
-                  </Typography>
+                  <Box>
+                    <Typography variant="h6" sx={classes.logo}>
+                      Stock Logo
+                    </Typography>
+                    <Typography variant="h6" sx={classes.createdBy}>
+                      Created By FAM
+                    </Typography>
+                  </Box>
                   <Box sx={classes.inputsContainer}>
                     <Field name="email">
                       {(props) => (

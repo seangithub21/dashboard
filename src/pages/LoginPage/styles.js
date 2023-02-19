@@ -1,6 +1,4 @@
-import theme from "configs/theme";
-
-const getStyles = () => {
+const getStyles = ({ theme }) => {
   return {
     container: {
       display: "flex",
@@ -20,10 +18,19 @@ const getStyles = () => {
       display: "flex",
       flexDirection: "column",
       gap: "1rem",
+      textAlign: "center",
     },
     logo: {
       fontWeight: "700",
       color: theme.palette.primary.main,
+    },
+    createdBy: {
+      fontSize: "1.3rem",
+      fontFamily: `Kaushan Script, ${theme.typography.fontFamily}`,
+      color:
+        theme.palette.mode === "light"
+          ? theme.palette.grey[700]
+          : theme.palette.grey[400],
     },
     inputsContainer: {
       display: "flex",
