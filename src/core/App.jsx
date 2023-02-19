@@ -85,7 +85,7 @@ const App = () => {
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <ToastContainer position="top-center" limit={3} />
+          <ToastContainer position="top-center" limit={2} />
           <Suspense fallback={<LinearProgress />}>
             <Routes>
               {publicRoutes.map((route) => (

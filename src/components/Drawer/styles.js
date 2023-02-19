@@ -20,11 +20,23 @@ const getStyles = ({ open, theme } = {}) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
   },
+  drawerHeaderLogo: {
+    display: "block",
+    textAlign: "center",
+  },
   logo: {
     fontWeight: "700",
     cursor: "pointer",
     color: theme.palette.primary.main,
-    fontSize: "3rem",
+    fontSize: "2.6rem",
+  },
+  createdBy: {
+    fontSize: "1.6rem",
+    fontFamily: `Kaushan Script, ${theme.typography.fontFamily}`,
+    color:
+      theme.palette.mode === "light"
+        ? theme.palette.grey[700]
+        : theme.palette.grey[400],
   },
   menuItem: {
     display: "block",

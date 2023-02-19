@@ -57,10 +57,11 @@ const Drawer = ({ open }) => {
 
   return (
     <MuiDrawer variant="permanent" open={open} sx={classes.drawer}>
-      <DrawerHeader>
+      <DrawerHeader sx={classes.drawerHeaderLogo}>
         <Typography sx={classes.logo} onClick={handleClickLogo}>
           Stock Logo
         </Typography>
+        <Typography sx={classes.createdBy}>Created By FAM</Typography>
       </DrawerHeader>
       <List>
         {sideBarMenuList.map((menuItem, index) => (
