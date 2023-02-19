@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This is a simple dashboard with stock market and cryptocurrencies information created for training purposes.
 Frontend is covered mainly with Material-UI library and RapidAPI is utilized underhood.
-You might be bumping up into " ...exceeding limit per minute" error notification popping out from top. Just wait for a minute and you are good go again!
+You might be bumping up into " ...exceeding limit per minute" error notification popping out from top. Just wait for a minute and you are good to go again!
 
 ## Built with
 
