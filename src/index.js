@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import "react-toastify/dist/ReactToastify.css";
 
+import "fonts/index.css";
+
 import App from "./core/App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

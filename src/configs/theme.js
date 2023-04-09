@@ -13,6 +13,7 @@ const theme = {
   },
   typography: {
     fontFamily: [
+      "UbuntuRegular",
       "-apple-system",
       "BlinkMacSystemFont",
       '"Segoe UI"',
@@ -25,7 +26,7 @@ const theme = {
       '"Segoe UI Symbol"',
     ].join(","),
     body1: {
-      fontSize: "1.4rem",
+      fontSize: "1.6rem",
     },
     body2: {
       fontSize: "1.2rem",
@@ -98,6 +99,12 @@ export const darkMode = {
       default: "#07071c",
       paper: "#08091f",
     },
+  },
+};
+
+export const mobile = {
+  typography: {
+    ...theme.typography,
   },
 };
 

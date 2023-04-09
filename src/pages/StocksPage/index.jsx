@@ -23,7 +23,7 @@ const StocksPage = () => {
         <Link
           underline="hover"
           onClick={() => handleClickCompanyTicker(rowData)}
-          sx={{ cursor: "pointer", fontWeight: "700" }}
+          sx={{ cursor: "pointer", fontFamily: "UbuntuBold" }}
         >
           {rowData.symbol}
         </Link>
