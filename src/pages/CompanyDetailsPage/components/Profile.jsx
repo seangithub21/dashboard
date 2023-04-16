@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, LinearProgress, Link, Typography } from "@mui/material";
+import { Box, LinearProgress, Link, Typography, useTheme } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
 
@@ -9,7 +9,8 @@ import InfoContainer from "components/common/InfoContainer";
 import { getProfileStyles } from "./styles";
 
 const Profile = () => {
-  const classes = getProfileStyles();
+  const theme = useTheme();
+  const classes = getProfileStyles({ theme });
   const { companyTicker } = useParams();
 
   const {

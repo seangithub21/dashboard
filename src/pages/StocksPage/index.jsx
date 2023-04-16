@@ -1,12 +1,16 @@
-import { LinearProgress, Link } from "@mui/material";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
+import { LinearProgress, Link, useMediaQuery } from "@mui/material";
 
 import { stocksStore } from "stores";
 import Table from "components/common/Table";
 
 const StocksPage = () => {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery((theme) =>
+    theme.breakpoints.between("sm", "md")
+  );
   const navigate = useNavigate();
 
   const { getStocks, stocks, isLoading } = stocksStore;
@@ -15,7 +19,7 @@ const StocksPage = () => {
     navigate(`company-details/${data.symbol}`);
   };
 
-  const columns = [
+  const mobileColumns = [
     {
       title: "Symbol",
       field: "symbol",
@@ -33,15 +37,26 @@ const StocksPage = () => {
       title: "Name",
       field: "name",
       cellStyle: {
-        width: "20rem",
+        maxWidth: "20rem",
+        textOverflow: "ellipsis",
+        overflow: "hidden",
+        whiteSpace: "nowrap",
       },
       headerStyle: {
         width: "20rem",
       },
     },
+  ];
+
+  const tabletColumns = [
+    ...mobileColumns,
+    { title: "Market", field: "mic_code" },
+  ];
+
+  const columns = [
+    ...tabletColumns,
     { title: "Currency", field: "currency" },
     { title: "Exchange", field: "exchange" },
-    { title: "Market", field: "mic_code" },
     { title: "Country", field: "country" },
     { title: "Type", field: "type" },
   ];
@@ -53,7 +68,13 @@ const StocksPage = () => {
 
   if (isLoading) return <LinearProgress />;
 
-  return <Table title="Stocks" columns={columns} data={stocks} />;
+  return (
+    <Table
+      title={!isMobile ? "Stocks" : ""}
+      columns={isMobile ? mobileColumns : isTablet ? tabletColumns : columns}
+      data={stocks}
+    />
+  );
 };
 
 export default observer(StocksPage);

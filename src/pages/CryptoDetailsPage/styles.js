@@ -1,11 +1,12 @@
 import theme from "configs/theme";
 
-const getStyles = () => {
+const getStyles = ({ isMobile }) => {
   return {
     cryptoNameInfo: {
       display: "flex",
-      alignItems: "center",
-      gap: "1rem",
+      flexDirection: isMobile && "column",
+      alignItems: isMobile ? "flex-start" : "center",
+      gap: !isMobile && "1rem",
     },
     cryptoName: {
       fontWeight: "700",
@@ -15,13 +16,14 @@ const getStyles = () => {
     },
     currentPriceContainer: {
       display: "flex",
-      alignItems: "flex-end",
+      flexDirection: isMobile && "column",
+      alignItems: !isMobile && "flex-end",
       gap: "1rem",
       mt: ".5rem",
       mb: ".5rem",
     },
     currentPrice: {
-      fontSize: "4rem",
+      fontSize: isMobile ? "3rem" : "4rem",
       fontWeight: 700,
       lineHeight: "1",
     },

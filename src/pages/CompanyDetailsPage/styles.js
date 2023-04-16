@@ -26,6 +26,9 @@ const getStyles = ({ theme }) => {
       fontSize: "4rem",
       fontWeight: 700,
       lineHeight: "1",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "3rem",
+      },
     },
     marketOpen: {
       color: theme.palette.marketOpen,

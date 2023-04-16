@@ -104,6 +104,8 @@ const Quote = () => {
             color:
               change && change.includes("-")
                 ? theme.palette.priceFall
+                : rolling_1d_change === undefined
+                ? ""
                 : theme.palette.priceRise,
             fontWeight: 700,
           }}

@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
   return (
     <Box sx={classes.container}>
       <AppBar drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
-      <Drawer open={drawerOpen} />
+      <Drawer open={drawerOpen} setDrawerOpen={setDrawerOpen} swipeable />
       <Box sx={classes.content}>
         <DrawerHeader sx={{ mb: "2rem" }} />
         {children}

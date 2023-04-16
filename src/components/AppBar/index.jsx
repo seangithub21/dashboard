@@ -7,6 +7,8 @@ import {
   Toolbar,
   Tooltip,
   useTheme,
+  Typography,
+  useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
@@ -18,6 +20,7 @@ import { ColorModeContext } from "core/App";
 import getStyles from "./styles";
 
 const AppBar = ({ drawerOpen, setDrawerOpen }) => {
+  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const theme = useTheme();
   const classes = getStyles({ drawerOpen, theme });
   const { toggleColorMode } = useContext(ColorModeContext);
@@ -27,10 +30,22 @@ const AppBar = ({ drawerOpen, setDrawerOpen }) => {
     setDrawerOpen((state) => !state);
   };
 
+  const handleClickLogo = () => {
+    navigate("/", { replace: true });
+  };
+
   return (
     <MuiAppBar position="fixed" sx={classes.appBar}>
       <Toolbar sx={classes.toolBar}>
         <MenuIcon onClick={handleDrawer} sx={classes.menuButton} />
+        {isTablet && (
+          <Box sx={{ textAlign: "center" }}>
+            <Typography sx={classes.logo} onClick={handleClickLogo}>
+              Stock Logo
+            </Typography>
+            <Typography sx={classes.createdBy}>Created By FAM</Typography>
+          </Box>
+        )}
         <Box>
           <Tooltip
             title={

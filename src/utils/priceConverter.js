@@ -5,6 +5,8 @@ export const decimalConverter = (number) => {
 export const priceChangeConverter = (number) => {
   if (number && number.includes("-")) {
     return decimalConverter(number);
+  } else if (number === undefined) {
+    return "-";
   } else {
     return `+${decimalConverter(number)}`;
   }
