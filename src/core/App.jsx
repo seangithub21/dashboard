@@ -5,10 +5,12 @@ import {
   ThemeProvider,
   LinearProgress,
   createTheme,
+  useMediaQuery,
 } from "@mui/material";
+
 import { ToastContainer } from "react-toastify";
 
-import baseTheme, { darkMode } from "configs/theme";
+import baseTheme, { darkMode, mobile } from "configs/theme";
 import { publicPaths, privatePaths } from "configs/routePaths";
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
@@ -58,6 +60,7 @@ export const ColorModeContext = createContext(null);
 
 const App = () => {
   const [themeMode, setThemeMode] = useState("light");
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   const colorMode = useMemo(
     () => ({
@@ -76,8 +79,11 @@ const App = () => {
           mode: themeMode,
           ...(themeMode === "light" ? baseTheme.palette : darkMode.palette),
         },
+        typography: {
+          ...(isMobile ? mobile.typography : baseTheme.typography),
+        },
       }),
-    [themeMode]
+    [themeMode, isMobile]
   );
 
   return (

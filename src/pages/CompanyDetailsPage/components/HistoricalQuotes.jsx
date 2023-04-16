@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import { LinearProgress, Typography } from "@mui/material";
+import { LinearProgress, Typography, useMediaQuery } from "@mui/material";
 import { format } from "date-fns";
 
 import { companyInfoStore } from "stores";
@@ -10,12 +10,13 @@ import { volumeConverter } from "utils/volumeConverter";
 import Table from "components/common/Table";
 
 const HistoricalQuotes = () => {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const { companyTicker } = useParams();
 
   const { getHistoricalQuotes, historicalQuotes, isLoadingHistoricalQuotes } =
     companyInfoStore;
 
-  const columns = [
+  const mobileColumns = [
     {
       title: "Date",
       field: "datetime",
@@ -27,6 +28,24 @@ const HistoricalQuotes = () => {
         );
       },
     },
+    {
+      title: "Open",
+      field: "open",
+      render: (rowData) => {
+        return <Typography>{decimalConverter(rowData.open)}</Typography>;
+      },
+    },
+    {
+      title: "Volume",
+      field: "volume",
+      render: (rowData) => {
+        return <Typography>{volumeConverter(rowData.volume)}</Typography>;
+      },
+    },
+  ];
+
+  const columns = [
+    ...mobileColumns,
     {
       title: "Close",
       field: "close",
@@ -48,20 +67,6 @@ const HistoricalQuotes = () => {
         return <Typography>{decimalConverter(rowData.low)}</Typography>;
       },
     },
-    {
-      title: "Open",
-      field: "open",
-      render: (rowData) => {
-        return <Typography>{decimalConverter(rowData.open)}</Typography>;
-      },
-    },
-    {
-      title: "Volume",
-      field: "volume",
-      render: (rowData) => {
-        return <Typography>{volumeConverter(rowData.volume)}</Typography>;
-      },
-    },
   ];
 
   useEffect(() => {
@@ -75,7 +80,7 @@ const HistoricalQuotes = () => {
     <Table
       title="Historical quotes"
       data={historicalQuotes}
-      columns={columns}
+      columns={isMobile ? mobileColumns : columns}
       options={{ search: false }}
     />
   );

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import { Box, LinearProgress, Typography } from "@mui/material";
+import { Box, LinearProgress, Typography, useMediaQuery } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 
@@ -31,7 +31,8 @@ const tabs = [
 ];
 
 const CompanyDetailsPage = () => {
-  const classes = getStyles();
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const classes = getStyles({ isMobile });
   const { cryptoSymbol } = useParams();
 
   const {

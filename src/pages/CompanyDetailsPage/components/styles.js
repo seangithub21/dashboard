@@ -13,7 +13,7 @@ export const getQuoteStyles = () => {
   };
 };
 
-export const getProfileStyles = () => {
+export const getProfileStyles = ({ theme }) => {
   return {
     mainInfoContainer: {
       display: "flex",
@@ -21,6 +21,9 @@ export const getProfileStyles = () => {
       gap: "5rem",
       width: "fit-content",
       mb: "2rem",
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "column",
+      },
     },
     logoContainer: {
       display: "flex",
