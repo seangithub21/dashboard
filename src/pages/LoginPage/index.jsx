@@ -48,7 +48,7 @@ const LoginPage = () => {
                       Stock Logo
                     </Typography>
                     <Typography variant="h6" sx={classes.createdBy}>
-                      Created By FAM
+                      ©2023 - 2026 Fam. UA
                     </Typography>
                   </Box>
                   <Box sx={classes.inputsContainer}>

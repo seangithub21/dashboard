@@ -32,8 +32,8 @@ const getStyles = ({ drawerOpen, theme }) => ({
     fontSize: "1.8rem",
   },
   createdBy: {
-    fontSize: "1.6rem",
-    fontFamily: `Kaushan Script, ${theme.typography.fontFamily}`,
+    fontSize: "1.4rem",
+    fontFamily: `${theme.typography.fontFamily}`,
     color:
       theme.palette.mode === "light"
         ? theme.palette.primary.contrastText
