@@ -114,7 +114,7 @@ const Drawer = ({ open, setDrawerOpen, swipeable }) => {
         <Typography sx={classes.logo} onClick={handleClickLogo}>
           Stock Logo
         </Typography>
-        <Typography sx={classes.createdBy}>Created By FAM</Typography>
+        <Typography sx={classes.createdBy}>©2023 - 2026 Fam. UA</Typography>
       </DrawerHeader>
       {drawerContent()}
     </MuiDrawer>

@@ -25,8 +25,8 @@ const getStyles = ({ theme }) => {
       color: theme.palette.primary.main,
     },
     createdBy: {
-      fontSize: "1.3rem",
-      fontFamily: `Kaushan Script, ${theme.typography.fontFamily}`,
+      fontSize: "1.4rem",
+      fontFamily: `${theme.typography.fontFamily}`,
       color:
         theme.palette.mode === "light"
           ? theme.palette.grey[700]
