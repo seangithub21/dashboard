@@ -55,7 +55,7 @@ const LoginPage = () => {
                     <Field name="email">
                       {(props) => (
                         <Input
-                          label="Email"
+                          label='For demo type "email"'
                           helperText={errors.email}
                           error={!!errors.email}
                           {...props}
@@ -65,7 +65,7 @@ const LoginPage = () => {
                     <Field name="password">
                       {(props) => (
                         <Input
-                          label="Password"
+                          label='For demo type "password"'
                           isPassword
                           helperText={errors.password}
                           error={!!errors.password}
